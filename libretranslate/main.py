@@ -1,7 +1,7 @@
 import argparse
 import operator
 import sys
-
+from flask_cors import CORS
 from libretranslate.app import create_app
 from libretranslate.default_values import DEFAULT_ARGUMENTS as DEFARGS
 
@@ -211,6 +211,7 @@ def get_args():
 def main():
     args = get_args()
     app = create_app(args)
+    CORS(app)
 
     if '--wsgi' in sys.argv:
         return app
