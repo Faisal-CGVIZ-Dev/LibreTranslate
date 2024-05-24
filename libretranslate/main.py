@@ -211,7 +211,7 @@ def get_args():
 def main():
     args = get_args()
     app = create_app(args)
-    CORS(app)
+    CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True)
 
     if '--wsgi' in sys.argv:
         return app
